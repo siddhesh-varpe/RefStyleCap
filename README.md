@@ -1,64 +1,107 @@
 # RefStyleCap: Reference-Guided Style-Aware Image Captioning
 
-This repository contains the official implementation of:
+> **Official implementation of:**
+> RefStyleCap: Reference-Guided Style-Aware Image Captioning
+>
+> *Authors:* Siddhesh Sanjay Hemangi Varpe · Sudesh Rani · Mayank Gupta
 
-> **RefStyleCap: Reference-Guided Style-Aware Image Captioning**  
-> *Authors:* [Siddhesh Sanjay Hemangi Varpe, Sudesh Rani, Mayank Gupta]   
-> [Paper PDF] | [Dataset]
+![NLP](https://img.shields.io/badge/Domain-NLP%20%26%20Computer%20Vision-purple?style=flat-square)
+![Style Transfer](https://img.shields.io/badge/Task-Style--Aware%20Captioning-teal?style=flat-square)
+![Models](https://img.shields.io/badge/Models-BLIP%20%7C%20BART%20%7C%20FLAN--T5-blue?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Research-orange?style=flat-square)
 
----
-
-## 🔍 Overview
-
-Image captioning methods have evolved from traditional CNN–RNN architectures to transformer-based vision–language models, shifting emphasis from basic descriptive accuracy toward stylistic control and contextual awareness. Despite these advances, generating captions that are both image-grounded and stylistically aligned with narrative-intensive domains remains challenging.
-
-This paper introduces **RefStyleCap**, a **reference-guided, style-aware image captioning framework**, evaluated on the **Harry Potter universe** as a highly constrained narrative domain.
-
-RefStyleCap is a **multi-stage pipeline** consisting of:
-
-1. **Visual Grounding**  
-   Baseline captions are generated using different variants of pre-trained **BLIP** models. These are then fine-tuned on **domain-specific movie stills** to improve factual accuracy and visual relevance.
-
-2. **Domain Specialization**  
-   BLIP models are further adapted using Harry Potter movie frames and related metadata to better capture domain-specific visual semantics.
-
-3. **Stylistic Adaptation**  
-   The fine-tuned captions are transformed to match the **literary tone of the Harry Potter novels** using:
-   - A **two-stage adapted BART** (Bidirectional and Auto-Regressive Transformers) model  
-   - A **prefix-tuned FLAN-T5** (Finetuned Language Net) model  
-   Both models are trained on the book corpus.
-
-4. **Reference Validation**  
-   Caption consistency is checked against narrative references to evaluate alignment with the story context.
+📄 [Paper PDF](#) · 📦 [Dataset](#)
 
 ---
 
-## ✨ Key Contributions
+## Overview
 
-- A **systematic, multi-stage pipeline** for reference-guided stylistic captioning  
-- Integration of **visual grounding + literary style transfer + narrative validation**  
-- Domain-specific fine-tuning of BLIP for improved factual relevance  
-- Two stylistic adaptation strategies: **BART-based** and **FLAN-T5-based**  
-- Hybrid evaluation using:
-  - Lexical metrics (e.g., METEOR)  
-  - Semantic similarity (sentence embeddings)  
-  - Qualitative analysis  
-  - LLM-as-a-Judge framework  
+Image captioning has evolved from basic CNN–RNN architectures to transformer-based vision–language models, shifting emphasis from descriptive accuracy toward stylistic control and contextual awareness. Yet generating captions that are both image-grounded **and** stylistically aligned with narrative-intensive domains remains a hard, unsolved problem.
+
+**RefStyleCap** is a **reference-guided, style-aware image captioning framework** that tackles this challenge head-on — evaluated on the **Harry Potter universe** as a highly constrained narrative domain.
+
+The core idea: rather than generating generic descriptions, RefStyleCap produces captions that read as if written by the author of the story — visually accurate, contextually aware, and stylistically expressive.
 
 ---
 
-## 📊 Results
+## Pipeline
 
-The proposed RefStyleCap framework consistently outperforms baseline and intermediate models.
+RefStyleCap is a **4-stage multi-model pipeline**:
 
-| Our Model                      | METEOR ↑ | Cosine Similarity ↑  |
-| **RefStyleCap (BART)**         | **50.95**| **61.58**            |
+![Image](SimpleVSProposed1.drawio.png)
 
-**Key Observation:**  
+---
+
+## Key Contributions
+
+- A **systematic, multi-stage pipeline** for reference-guided stylistic image captioning
+- Integration of **visual grounding + literary style transfer + narrative validation** in a single framework
+- Domain-specific fine-tuning of BLIP on Harry Potter movie frames for improved factual relevance
+- Two stylistic adaptation strategies: **BART-based** (two-stage) and **FLAN-T5-based** (prefix-tuned)
+- Hybrid evaluation using lexical metrics, semantic similarity, qualitative analysis, and an **LLM-as-a-Judge** framework
+
+---
+
+## Results
+
+The RefStyleCap framework consistently outperforms baseline and intermediate models across all evaluation metrics.
+
+| Model | METEOR ↑ | Cosine Similarity ↑ |
+|-------|----------|----------------------|
+| **RefStyleCap (BART)** | **50.95** | **61.58** |
+
 The **BART-based stylistic adaptation** variant achieves the best overall performance, demonstrating that reference-based stylistic transfer in a structured pipeline produces captions that are:
 
-- Visually accurate  
-- Context-aware  
-- Stylistically expressive  
+- Visually accurate
+- Context-aware
+- Stylistically expressive
 
 ---
+
+## Evaluation Methods
+
+| Method | Purpose |
+|--------|---------|
+| **METEOR** | Lexical alignment with reference captions |
+| **Cosine Similarity** | Semantic closeness via sentence embeddings |
+| **Qualitative Analysis** | Human assessment of style and fluency |
+| **LLM-as-a-Judge** | Automated scoring of stylistic quality and alignment |
+
+---
+
+## Models Used
+
+| Model | Role |
+|-------|------|
+| **BLIP / BLIP-Large** | Visual grounding — baseline caption generation |
+| **Fine-tuned BLIP** | Domain specialization on HP movie stills |
+| **BART** | Two-stage stylistic adaptation |
+| **FLAN-T5** | Prefix-tuned stylistic adaptation |
+
+---
+
+## Citation
+
+If you use this work, please cite:
+
+```bibtex
+@article{refstylecap2024,
+  title     = {RefStyleCap: Reference-Guided Style-Aware Image Captioning},
+  author    = {Varpe, Siddhesh Sanjay Hemangi and Rani, Sudesh and Gupta, Mayank},
+  year      = {2024}
+}
+```
+
+---
+
+## Authors
+
+| Name | Contact |
+|------|---------|
+| Siddhesh Sanjay Hemangi Varpe | — |
+| Sudesh Rani | — |
+| Mayank Gupta | — |
+
+---
+
+*Research project · More details coming soon*
