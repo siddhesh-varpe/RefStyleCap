@@ -98,9 +98,9 @@ If you use this work, please cite:
 
 | Name | Contact |
 |------|---------|
-| Siddhesh Sanjay Hemangi Varpe | — |
-| Sudesh Rani | — |
-| Mayank Gupta | — |
+| Siddhesh Sanjay Hemangi Varpe | siddheshsanjayvarpe.mt24cse@pec.edu.in |
+| Sudesh Rani | sudeshrani@pec.edu.in |
+| Mayank Gupta | mayankgupta@pec.edu.in |
 
 ---
 
